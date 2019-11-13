@@ -18,7 +18,7 @@ public class EnvController {
     public EnvController(
             @Value("${port:20000}") String port,
             @Value("${memory.limit:NOT SET}") String memoryLimit,
-            @Value("${cf.instance.index}") String cfInstanceIndex,
+            @Value("${cf.instance.index:NOT SET}") String cfInstanceIndex,
             @Value("${cf.instance.addr:NOT SET}") String cfInstanceAddress
     ) {
         this.port = port;
