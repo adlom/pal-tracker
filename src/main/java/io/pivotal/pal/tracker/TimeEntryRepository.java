@@ -1,13 +1,17 @@
 package io.pivotal.pal.tracker;
 
-import org.springframework.stereotype.Component;
+import java.util.List;
 
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
+public interface TimeEntryRepository {
 
-@Component
-public class TimeEntryRepository {
+
+    public TimeEntry create(TimeEntry any);
+    public TimeEntry find(long timeEntryId);
+    public abstract List<TimeEntry> list() ;
+    public TimeEntry update(long eq, TimeEntry any) ;
+    public void delete(long timeEntryId);
+
+/*
     private ConcurrentHashMap<Long, TimeEntry> map = new ConcurrentHashMap<>();
     private AtomicLong seq = new AtomicLong(1L);
 
@@ -27,10 +31,7 @@ public class TimeEntryRepository {
         return map.get(timeEntryId);
     }
 
-    public List<TimeEntry> list() {
-        List<TimeEntry> list = new ArrayList(map.values());
-        return list;
-    }
+    public abstract List<TimeEntry> list() ;
 
     public TimeEntry update(long eq, TimeEntry any) {
         TimeEntry updatedTimeEntry = new TimeEntry(eq, any.getProjectId(), any.getUserId(), any.getDate(), any.getHours());
@@ -39,7 +40,7 @@ public class TimeEntryRepository {
 
     }
 
-    public TimeEntry delete(long timeEntryId) {
-        return map.remove(timeEntryId);
-    }
+    public void delete(long timeEntryId) {
+        map.remove(timeEntryId);
+    }*/
 }

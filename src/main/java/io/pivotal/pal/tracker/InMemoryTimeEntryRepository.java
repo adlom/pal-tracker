@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class InMemoryTimeEntryRepository {
+public class InMemoryTimeEntryRepository implements TimeEntryRepository {
 
     private ConcurrentHashMap<Long, TimeEntry> map = new ConcurrentHashMap<>();
     private AtomicLong seq = new AtomicLong(1L);
@@ -37,4 +37,5 @@ public class InMemoryTimeEntryRepository {
     public void delete(long id) {
         map.remove(id);
     }
+
 }
